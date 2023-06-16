@@ -29,6 +29,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $enderecoLivrariaErro = 'Por favor digite o endereço da livraria!';
             $validacao = False;
         }
+        
+
+        if (!empty($_POST['Telefone'])) {
+            $telefone = $_POST['Telefone'];
+        } else {
+            $telefoneLivrariaErro = 'Por favor digite o telefone da livraria!';
+            $validacao = False;
+        }
 
 
         if (!empty($_POST['Site'])) {
@@ -58,9 +66,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($validacao) {
         $pdo = Banco::conectar();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "INSERT INTO livrarias(Nome, Endereco, Site, Logo) VALUES(?,?,?,?)";
+        $sql = "INSERT INTO livrarias(Nome, Endereco, Telefone, Site, Logo) VALUES(?,?,?,?,?)";
         $q = $pdo->prepare($sql);
-        $q->execute(array($nomeLivraria, $endereco, $site, $logo));
+        $q->execute(array($nomeLivraria, $endereco, $telefone, $site, $logo));
         Banco::desconectar();
         header("Location: index.php");
     }
@@ -109,6 +117,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <?php endif; ?>
                         </div>
                     </div>
+
+
+                    <div class="control-group <?php echo !empty($telefoneLivrariaErro) ? 'error ' : ''; ?>">
+                        <label class="control-label">Telefone livraria*</label>
+                        <div class="controls">
+                            <input size="100" class="form-control" name="Telefone" type="text" placeholder="Telefone"
+                                   value="<?php echo !empty($telefone) ? $telefone : ''; ?>">
+                            <?php if (!empty($telefoneLivrariaErro)): ?>
+                                <span class="text-danger"><?php echo $telefoneLivrariaErro; ?></span>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+
 					
                     <div class="control-group <?php !empty($siteLivrariaErro) ? '$siteLivrariaErro ' : ''; ?>">
                         <label class="control-label">Site livraria*</label>
