@@ -311,3 +311,9 @@ button:hover {
     border-radius: 5px;
     margin-bottom: 25px;
 }
+
+.cabecalho {
+    font-size: 20px;
+    border: 2px solid black;
+    text-align: center;
+}

@@ -11,6 +11,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700,800,900&display=swap" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
@@ -76,7 +77,7 @@
             <thead>
                 <tr>
                     <!--<th scope="col">Id</th>-->
-                    <th scope="col" style="font-size: 20px; border: 2px solid black;">Site</th>
+                    <th scope="col" style="font-size: 20px; border: 2px solid black">Site</th>
                     <th scope="col" style="font-size: 20px; border: 2px solid black;">Livrarias</th>
                     <th scope="col" style="font-size: 20px; border: 2px solid black;">Endereço</th>
                     <th scope="col" style="font-size: 20px; border: 2px solid black;">Telefone</th>
@@ -98,16 +99,14 @@
                     echo '<img src="'.$row['Logo'].'"style="width: 300px; height: 200px;">';
                     echo '</a>';
                     echo '</td>';
-                    echo '<td>'. $row['Nome'] . '</td>';
-                    echo '<td>'. $row['Endereco'] . '</td>';
+                    echo '<td style="font-size: 20px; border: 2px solid black">'. $row['Nome'] . '</td>';
+                    echo '<td style="font-size: 20px; border: 2px solid black">'. $row['Endereco'] . '</td>';
                     if( preg_match( '/^(\d{2})(\d{4})(\d{4})$/', $row['Telefone'],  $matches ) )
                     {
                         $row['Telefone'] = '('.$matches[1].') ' .$matches[2] . '-' . $matches[3];
                     }
-                    echo '<td>'. $row['Telefone'] . '</td>';
+                    echo '<td style="font-size: 20px; border: 2px solid black">'. $row['Telefone'] . '</td>';
                     echo '<td class="action-cell" width=250>';
-                    echo '<a class="btn btn-primary" href="read.php?id='.$row['id'].'">Info</a>';
-                    echo ' ';
                     echo '<a class="btn btn-warning" href="update.php?id='.$row['id'].'">Editar</a>';
                     echo ' ';
                     echo '<a class="btn btn-danger" href="delete.php?id='.$row['id'].'">Excluir</a>';
