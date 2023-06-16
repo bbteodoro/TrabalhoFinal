@@ -95,7 +95,7 @@
                     echo '<td>';
                     //echo '<th scope="row">'. $row['id'] . '</th>';
                     echo '<a href="'.$row['Site'].'">';
-                    echo '<img src="'.$row['Logo'].'">';
+                    echo '<img src="'.$row['Logo'].'"style="width: 300px; height: 200px;">';
                     echo '</a>';
                     echo '</td>';
                     echo '<td>'. $row['Nome'] . '</td>';
