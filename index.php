@@ -76,11 +76,11 @@
             <thead>
                 <tr>
                     <!--<th scope="col">Id</th>-->
-                    <th scope="col">Site</th>
-                    <th scope="col">Livrarias</th>
-                    <th scope="col">Endereço</th>
-                    <th scope="col">Telefone</th>
-                    <th scope="col">Ação</th>
+                    <th scope="col" style="font-size: 20px; border: 2px solid black;">Site</th>
+                    <th scope="col" style="font-size: 20px; border: 2px solid black;">Livrarias</th>
+                    <th scope="col" style="font-size: 20px; border: 2px solid black;">Endereço</th>
+                    <th scope="col" style="font-size: 20px; border: 2px solid black;">Telefone</th>
+                    <th scope="col" style="font-size: 20px; border: 2px solid black;">Ação</th>
                 </tr>
             </thead>
             <tbody>
