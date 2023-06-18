@@ -53,13 +53,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $logoLivrariaErro = 'Por favor digite o link da logo!';
             $validacao = False;
         }
-		
-		// if (!empty($_POST['Telefone'])) {
-        //     $telefoneLivraria = $_POST['Telefone'];
-        // } else {
-        //     $telefoneLivrariaErro = 'Por favor digite o telefone da montadora!';
-        //     $validacao = False;
-        // }
     }
 
 //Inserindo no Banco:
