@@ -40,26 +40,26 @@
 
     <div id="inicio" class="tabcontent active">
         <div class="inicio">
-            <h1>Bem-vindo ao nosso site!</h1>
-            <p>Dedicado a oferecer uma experiência única para os amantes de livros e leitores ávidos! Aqui, você
+            <h1 style="font-size: 30px;">Bem-vindo ao nosso site!</h1>
+            <p style="font-size: 20px;">Dedicado a oferecer uma experiência única para os amantes de livros e leitores ávidos! Aqui, você
                 encontrará um vasto banco de dados de livrarias, projetado para facilitar a busca e a descoberta
                 de novos títulos em sua região ou em qualquer lugar do mundo.</p>
-            <p>Descubra. Explore. Encontre sua próxima história favorita nas livrarias mais incríveis ao redor.
+            <p style="font-size: 20px;">Descubra. Explore. Encontre sua próxima história favorita nas livrarias mais incríveis ao redor.
                 Bem-vindo ao nosso mundo literário!</p>
         </div>
     </div>
 
     <div id="livrarias" class="tabcontent">
         <div class="inicio">
-            <h1>Livrarias</h1>
-            <p>Aqui está o conteúdo da página "Livrarias".</p>
+            <h1 style="font-size: 30px;">Livrarias</h1>
+            <p style="font-size: 20px;">Aqui está o conteúdo da página "Livrarias".</p>
         </div>
     </div>
 
     <div id="servicos" class="tabcontent">
         <div class="inicio">
-            <h1>Serviços</h1>
-            <p>Aqui está o conteúdo da página "Serviços".</p>
+            <h1 style="font-size: 30px;">Serviços</h1>
+            <p style="font-size: 20px;">Aqui está o conteúdo da página "Serviços".</p>
         </div>
     </div>
 
@@ -71,7 +71,7 @@
 
     <div class="row">
         <p>
-            <a href="create.php" class="btn btn-success">Nova Livraria</a>
+            <a href="create.php" style="font-size: 1.5rem;" class="btn btn-success">Nova Livraria</a>
         </p>
         <table class="table table-striped">
             <thead>
@@ -96,7 +96,7 @@
                     echo '<td>';
                     //echo '<th scope="row">'. $row['id'] . '</th>';
                     echo '<a href="'.$row['Site'].'">';
-                    echo '<img src="'.$row['Logo'].'"style="width: 300px; height: 200px;">';
+                    echo '<img src="'.$row['Logo'].'"style="width: 250px; height: 200px;">';
                     echo '</a>';
                     echo '</td>';
                     echo '<td style="font-size: 20px; border: 2px solid black">'. $row['Nome'] . '</td>';
