@@ -2,10 +2,10 @@
 
 class Banco
 {
-    private static $dbNome = 'lojalivros';
-    private static $dbHost = '127.0.0.1';
-    private static $dbUsuario = 'root';
-    private static $dbSenha = '';
+    // $dbNome = 'lojalivros';
+    // $dbHost = '127.0.0.1';
+    // $dbUsuario = 'root';
+    // $dbSenha = '';
     	
 	// private static $dbNome = getenv(DB_DATABASE);
     // private static $dbHost = getenv(DB_HOST);
@@ -21,10 +21,31 @@ class Banco
     
     public static function conectar()
     {
+        $whitelist= array(
+            'localhost'
+        )
+
+        if(!in_array($_SERVER['REMOTE_ADDR'], $whitelist)){
+            $dbNome = getenv('DB_DATABASE');
+            $dbHost = getenv('DB_HOST');
+            $dbUsuario = getenv('DB_USERNAME');
+            $dbSenha = getenv('DB_PASSWORD');
+        }else{
+            $dbNome = 'lojalivros';
+            $dbHost = '127.0.0.1';
+            $dbUsuario = 'root';
+            $dbSenha = '';
+        }
+
         if(null == self::$cont)
         {
             try
             {
+                $dbNome = getenv(DB_DATABASE);
+                $dbHost = getenv(DB_HOST);
+                $dbUsuario = getenv(DB_USERNAME);
+                $dbSenha = getenv(DB_PASSWORD);
+
                 self::$cont =  new PDO( "mysql:host=".self::$dbHost.";"."dbname=".self::$dbNome, self::$dbUsuario, self::$dbSenha); 
             }
             catch(PDOException $exception)
