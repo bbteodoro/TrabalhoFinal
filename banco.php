@@ -23,6 +23,8 @@ class Banco
     {
         $whitelist= array(
             'localhost'
+            ,'::1',
+            '127.0.0.1'
         );
 
         if(!in_array($_SERVER['REMOTE_ADDR'], $whitelist)){
@@ -41,12 +43,7 @@ class Banco
         {
             try
             {
-                $dbNome = getenv(DB_DATABASE);
-                $dbHost = getenv(DB_HOST);
-                $dbUsuario = getenv(DB_USERNAME);
-                $dbSenha = getenv(DB_PASSWORD);
-
-                self::$cont =  new PDO( "mysql:host=".self::$dbHost.";"."dbname=".self::$dbNome, self::$dbUsuario, self::$dbSenha); 
+                self::$cont =  new PDO( "mysql:host=".$dbHost.";"."dbname=".$dbNome, $dbUsuario, $dbSenha); 
             }
             catch(PDOException $exception)
             {
