@@ -19,15 +19,12 @@ if (!empty($_POST)) {
 	$telefoneLivrariaErro = null;
     $logoLivrariaErro = null;
 
-    $nomeProjeto = $_POST['nome_projeto'];
-    $gerenteProjeto = $_POST['gerente_projeto'];
-    $montadora = $_POST['montadora'];
-    $responsavelMontadora = $_POST['responsavel_montadora'];
-    $emailMontadora = $_POST['email_montadora'];
-	$telefoneMontadora = $_POST['telefone_montadora'];
-	$partNumberOem = $_POST['part_number_oem'];
-    $partNumberFundido = $_POST['part_number_fundido'];
-	$partNumberUsinado = $_POST['part_number_usinado'];
+    $nomeLivraria = $_POST['Nome'];
+    $enderecoLivraria = $_POST['Endereco'];
+    $telefoneLivraria = $_POST['Telefone'];
+    $siteLivraria = $_POST['Site'];
+    $logoLivraria = $_POST['Logo'];
+
 
     //Validação
     $validacao = true;
@@ -77,29 +74,24 @@ if (!empty($_POST)) {
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $sql = "UPDATE livrarias set Nome = ?, Endereco = ?, Telefone = ?, Site = ?, Logo = ? WHERE id = ?";
         $q = $pdo->prepare($sql);
-        $q->execute(array($nomeLivraria, $endereco, $telefone, $site, $logo));
+        $q->execute(array($nomeLivraria, $enderecoLivraria, $telefoneLivraria, $siteLivraria, $logoLivraria, $id));
         Banco::desconectar();
         header("Location: index.php");
     }
-} 
-// else {
-//     $pdo = Banco::conectar();
-//     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-//     $sql = 'SELECT p.id, p.nome_projeto, p.gerente_projeto, p.id_montadora, p.responsavel_montadora, p.email_montadora, p.telefone_montadora, p.part_number_oem, p.part_number_usinado, p.part_number_fundido, m.nome AS nome_montadora FROM projeto p LEFT JOIN montadora m ON(p.id_montadora = m.id) WHERE p.id = ? ORDER BY p.id ASC';
-//     $q = $pdo->prepare($sql);
-//     $q->execute(array($id));
-//     $data = $q->fetch(PDO::FETCH_ASSOC);
+} else {
+    $pdo = Banco::conectar();
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $sql = 'SELECT Nome, Endereco, Telefone, Site, Logo FROM livrarias WHERE id = ? ORDER BY id ASC';
+    $q = $pdo->prepare($sql);
+    $q->execute(array($id));
+    $data = $q->fetch(PDO::FETCH_ASSOC);
 	
-// 	$nomeProjeto = $data['nome_projeto'];
-//     $gerenteProjeto = $data['gerente_projeto'];
-//     $montadora = $data['id_montadora'];
-//     $responsavelMontadora = $data['responsavel_montadora'];
-//     $emailMontadora = $data['email_montadora'];
-// 	$telefoneMontadora = $data['telefone_montadora'];
-// 	$partNumberOem = $data['part_number_oem'];
-//     $partNumberFundido = $data['part_number_fundido'];
-// 	$partNumberUsinado = $data['part_number_usinado'];
-// }
+    $nomeLivraria = $data['Nome'];
+    $enderecoLivraria = $data['Endereco'];
+    $telefoneLivraria = $data['Telefone'];
+    $siteLivraria = $data['Site'];
+    $logoLivraria = $data['Logo'];
+}
 ?>
 
 <!DOCTYPE html>
@@ -124,7 +116,7 @@ if (!empty($_POST)) {
                 <h3 class="well"> Atualizar Livraria </h3>
             </div>
             <div class="card-body">
-                <form class="form-horizontal" action="create.php" method="post">
+                <form class="form-horizontal" action="update.php?id=<?php echo $id ?>" method="post">
 
                     <div class="control-group  <?php echo !empty($nomeLivrariaErro) ? 'error ' : ''; ?>">
                         <label class="control-label">Nome livraria*</label>
@@ -137,11 +129,12 @@ if (!empty($_POST)) {
                         </div>
                     </div>
 
+
                     <div class="control-group <?php echo !empty($enderecoLivrariaErro) ? 'error ' : ''; ?>">
                         <label class="control-label">Endereço livraria*</label>
                         <div class="controls">
                             <input size="100" class="form-control" name="Endereco" type="text" placeholder="Endereço"
-                                   value="<?php echo !empty($endereco) ? $endereco : ''; ?>">
+                                   value="<?php echo !empty($enderecoLivraria) ? $enderecoLivraria : ''; ?>">
                             <?php if (!empty($enderecoLivrariaErro)): ?>
                                 <span class="text-danger"><?php echo $enderecoLivrariaErro; ?></span>
                             <?php endif; ?>
@@ -153,7 +146,7 @@ if (!empty($_POST)) {
                         <label class="control-label">Telefone livraria*</label>
                         <div class="controls">
                             <input size="100" class="form-control" name="Telefone" type="text" placeholder="Telefone"
-                                   value="<?php echo !empty($telefone) ? $telefone : ''; ?>">
+                                   value="<?php echo !empty($telefoneLivraria) ? $telefoneLivraria : ''; ?>">
                             <?php if (!empty($telefoneLivrariaErro)): ?>
                                 <span class="text-danger"><?php echo $telefoneLivrariaErro; ?></span>
                             <?php endif; ?>
@@ -165,7 +158,7 @@ if (!empty($_POST)) {
                         <label class="control-label">Site livraria*</label>
                         <div class="controls">
                             <input size="100" class="form-control" name="Site" type="text" placeholder="Site"
-                                   value="<?php echo !empty($site) ? $site : ''; ?>">
+                                   value="<?php echo !empty($siteLivraria) ? $siteLivraria : ''; ?>">
                             <?php if (!empty($siteLivrariaErro)): ?>
                                 <span class="text-danger"><?php echo $siteLivrariaErro; ?></span>
                             <?php endif; ?>
@@ -177,7 +170,7 @@ if (!empty($_POST)) {
                         <label class="control-label">Logo livraria*</label>
                         <div class="controls">
                             <input size="100" class="form-control" name="Logo" type="text" placeholder="Logo"
-                                   value="<?php echo !empty($logo) ? $logo : ''; ?>">
+                                   value="<?php echo !empty($logoLivraria) ? $logoLivraria : ''; ?>">
                             <?php if (!empty($logoLivrariaErro)): ?>
                                 <span class="text-danger"><?php echo $logoLivrariaErro; ?></span>
                             <?php endif; ?>
@@ -198,7 +191,7 @@ if (!empty($_POST)) {
 					
                     <div class="form-actions">
                         <br/>
-                        <button type="submit" class="btn btn-success">Adicionar</button>
+                        <button type="submit" class="btn btn-success">Atualizar</button>
                         <a href="index.php" type="btn" class="btn btn-default">Voltar</a>
                     </div>
                 </form>
