@@ -23,7 +23,7 @@ class Banco
     {
         $whitelist= array(
             'localhost'
-        )
+        );
 
         if(!in_array($_SERVER['REMOTE_ADDR'], $whitelist)){
             $dbNome = getenv('DB_DATABASE');
