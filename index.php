@@ -54,22 +54,8 @@
             <h1 style="font-size: 30px;">Livrarias</h1>
             <p style="font-size: 20px;">Aqui está o conteúdo da página "Livrarias".</p>
         </div>
-    </div>
 
-    <div id="servicos" class="tabcontent">
-        <div class="inicio">
-            <h1 style="font-size: 30px;">Serviços</h1>
-            <p style="font-size: 20px;">Aqui está o conteúdo da página "Serviços".</p>
-        </div>
-    </div>
-
-
-    <!-- <div id="contatos" class="tabcontent">
-        <h2>Serviços</h2>
-        <p>Aqui está o conteúdo da página "Serviços".</p>
-    </div> -->
-
-    <div class="row">
+        <div class="row">
         <p>
             <a href="create.php" style="font-size: 1.5rem;" class="btn btn-success">Nova Livraria</a>
         </p>
@@ -118,6 +104,21 @@
             </tbody>
         </table>
     </div>
+        
+    </div>
+
+    <div id="servicos" class="tabcontent">
+        <div class="inicio">
+            <h1 style="font-size: 30px;">Serviços</h1>
+            <p style="font-size: 20px;">Aqui está o conteúdo da página "Serviços".</p>
+        </div>
+    </div>
+
+
+    <!-- <div id="contatos" class="tabcontent">
+        <h2>Serviços</h2>
+        <p>Aqui está o conteúdo da página "Serviços".</p>
+    </div> -->
 
     <script src="assets/js/script.js"></script>
 
